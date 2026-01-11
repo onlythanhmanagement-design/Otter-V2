@@ -1,0 +1,46 @@
+/* 🎨 Otter Neon Theme Vars */
+:root{
+--otter-bg:#05060a;
+--otter-text:#d7fdfd;
+--otter-muted:rgba(255,255,255,0.35);
+--otter-neon-1:#00ffc8;
+--otter-neon-2:#0ff0fc;
+--otter-neon-3:#9945ff;
+--otter-glow:0 0 10px rgba(0,255,200,0.45);
+}
+
+/* Header Glow Animations */
+.header-glow{position:absolute;top:100%;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#00ffa3 20%,#14f195 50%,#00ffa3 80%,transparent);
+background-size:200% 100%;animation:headerGlowMove 12s linear infinite,glowPulse 5s ease-in-out infinite alternate;filter:blur(0.8px) brightness(1.25);opacity:0.45;pointer-events:none;}
+.header-glow::before{content:"";position:absolute;top:0;left:0;width:8%;height:100%;background:radial-gradient(circle,#aaffee 0%,transparent 70%);animation:lightPulse 6s ease-in-out infinite;opacity:0.7;filter:blur(2px);}
+@keyframes headerGlowMove{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+@keyframes lightPulse{0%{left:0%;opacity:0.2;}50%{left:92%;opacity:0.8;}100%{left:0%;opacity:0.2;}}
+@keyframes glowPulse{0%{opacity:0.35;filter:blur(0.6px) brightness(1.1);}100%{opacity:0.6;filter:blur(1.2px) brightness(1.5);}}
+/* Logo / Wobble / Spin Pulse */
+.logo-anim{animation:wobble 3s ease-in-out infinite,spinPulse 9s linear infinite;}
+/* Glow Cards & Posts */
+.post:hover::before{content:"";position:absolute;inset:0;padding:2px;border-radius:14px;background:linear-gradient(90deg,#00ffc8,#0ff0fc,#9945FF,#00ffc8);background-size:300% 100%;animation:gobblesBorderFlow 2.5s linear infinite;filter:drop-shadow(0 0 12px rgba(0,255,200,0.45));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:1;}
+.post:hover::after{content:"";position:absolute;inset:0;border-radius:14px;background:radial-gradient(circle at center,rgba(0,255,200,0.12),rgba(0,255,200,0.02) 70%);opacity:0.8;animation:gobblesInnerPulse 3s ease-in-out infinite;z-index:0;}
+@keyframes gobblesBorderFlow{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes gobblesInnerPulse{0%,100%{opacity:0.6;filter:blur(1px);}50%{opacity:1;filter:blur(2px);}}
+/* Reply Panel / Modal */
+.reply-panel{position:fixed;top:0;right:0;width:360px;height:100%;background:rgba(10,10,10,0.95);border-left:1px solid rgba(0,255,200,0.2);transform:translateX(100%);transition:transform 0.45s cubic-bezier(0.22,1,0.36,1);z-index:1000;backdrop-filter:blur(6px);box-shadow:-6px 0 24px rgba(0,255,200,0.08);}
+.reply-panel.show{transform:translateX(0);animation:panelGlow 0.7s ease;}
+.reply-panel-inner{padding:14px;color:var(--otter-neon-1);overflow-y:auto;height:100%;}
+.reply-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,255,200,0.2);padding-bottom:8px;margin-bottom:10px;}
+.reply-header h3{display:flex;align-items:center;gap:6px;font-size:1.1rem;font-weight:700;letter-spacing:0.4px;color:var(--otter-neon-1);text-transform:uppercase;text-shadow:var(--otter-glow);}
+.close-replies{background:none;border:none;color:var(--otter-neon-1);font-size:1.2em;cursor:pointer;transition:transform 0.25s ease,color 0.25s ease;}
+.close-replies:hover{transform:scale(1.2);color:var(--otter-neon-2);}
+.reply-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 12px;margin-bottom:10px;color:var(--otter-text);transition:background .25s ease, box-shadow .25s ease, transform .2s ease;}
+.reply-item:hover{background:rgba(0,255,200,0.04);box-shadow:0 0 12px rgba(0,255,200,0.1);transform:scale(1.02);}
+.reply-author{display:inline-block;padding:3px 8px;border-radius:8px;background:rgba(0,255,200,0.08);color:var(--otter-neon-2);font-size:0.8rem;letter-spacing:0.3px;border:1px solid rgba(0,255,200,0.15);box-shadow:0 0 10px rgba(0,255,200,0.25);transition:background .25s ease, transform .2s ease, color .25s ease;margin-bottom:6px;cursor:pointer;}
+.reply-author:hover{background:rgba(0,255,200,0.15);color:var(--otter-neon-1);transform:translateY(-1px);text-shadow:var(--otter-glow);}
+@keyframes panelGlow{0%{box-shadow:-4px 0 40px rgba(0,255,200,0.0);}50%{box-shadow:-4px 0 40px rgba(0,255,200,0.4);}100%{box-shadow:-4px 0 25px rgba(0,255,200,0.15);}}
+/* Wallet Tiers */
+.wallet-bar{display:inline-block;padding:6px 14px;border-radius:12px;font-size:14px;font-weight:700;letter-spacing:0.6px;color:#e9ffff;background:linear-gradient(90deg,rgba(255,255,255,0.08),rgba(255,255,255,0.05),rgba(255,255,255,0.08));backdrop-filter:blur(5px);border:1px solid rgba(255,255,255,0.18);box-shadow:inset 0 0 14px rgba(255,255,255,0.12),0 2px 10px rgba(0,0,0,0.35);background-size:230% 100%;animation:walletFlow 6s ease-in-out infinite;transition:0.25s ease;}
+@keyframes walletFlow{0%{background-position:0% 0%;}50%{background-position:100% 0%;}100%{background-position:0% 0%;}}
+.wallet-bar:hover{transform:translateY(-1px) scale(1.03);box-shadow:inset 0 0 18px rgba(255,255,255,0.25),0 2px 18px rgba(0,0,0,0.45);}
+.wallet-bar.level-tier-novice{box-shadow:inset 0 0 16px rgba(0,255,255,0.35),0 0 14px rgba(0,255,255,0.25),0 0 30px rgba(0,255,255,0.2);background:linear-gradient(90deg,rgba(0,255,255,0.22),rgba(0,180,255,0.28),rgba(0,255,200,0.22));}
+.wallet-bar.level-tier-pro{box-shadow:inset 0 0 16px rgba(153,69,255,0.35),0 0 14px rgba(153,69,255,0.25),0 0 30px rgba(153,69,255,0.2);background:linear-gradient(90deg,rgba(153,69,255,0.3),rgba(200,120,255,0.25),rgba(120,40,255,0.32));}
+.wallet-bar.level-tier-elite{box-shadow:inset 0 0 18px rgba(255,215,0,0.35),0 0 16px rgba(255,200,0,0.25),0 0 34px rgba(255,220,100,0.25);background:linear-gradient(90deg,rgba(255,210,0,0.22),rgba(255,190,80,0.30),rgba(255,140,0,0.25));}
+.wallet-bar.level-tier-legend{box-shadow:inset 0 0 22px rgba(255,255,255,0.55),0 0 22px rgba(200,120,255,0.45),0 0 42px rgba(255,255,255,0.4);background:linear-gradient(90deg,rgba(255,255,255,0.35),rgba(200,140,255,0.45),rgba(255,255,255,0.40));color:#ffffff;}

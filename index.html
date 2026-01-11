@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="/img/favicon.png">
+
+<!-- Barlow Font -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart Data Labels Plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<!-- Solana Web3 -->
+<script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<title>Otter — Solana Social Network!</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="/base.css">
+<link rel="stylesheet" href="/otter-ui.css">
+<link rel="stylesheet" href="/responsive.css">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<header>...</header> <!-- inchangé, inclus votre UI actuelle -->
+
+<main class="container">
+  <div class="grid">
+    <section>
+      <div class="card">
+        <div class="body">
+          <h3>Create Post</h3>
+          <textarea id="postText" maxlength="140" placeholder="What's happening? Use #hashtags for trends!"></textarea>
+          <button id="postBtn" class="btn">Post</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <h3>Community Feed <span id="filterBadge" style="display:none"></span></h3>
+        </div>
+        <div class="feed-separator"></div>
+        <div id="feed"></div>
+      </div>
+    </section>
+
+    <aside>
+      <div class="card">
+        <div class="body">
+          <h3>Trending</h3>
+          <ul id="trending-list"></ul>
+          <button id="resetFeedBtn" class="btn">🔄 Show All Posts</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <h3>Sentiment & Trends</h3>
+          <input id="searchPostsInput" type="text" class="text-input" placeholder="Search keyword...">
+          <input id="filterUserInput" type="text" class="text-input" placeholder="Filter by wallet...">
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- Profile, reply modals etc. inchangés -->
+<script src="/script.js"></script>
+</body>
+</html>
